@@ -18,3 +18,16 @@
 
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
+echo "CONFIG_PACKAGE_luci-app-ssr-plus=y" >> .config
+echo "CONFIG_PACKAGE_luci-app-smartdns=y" >> .config
+echo "CONFIG_PACKAGE_luci-app-tinc=y" >> .config
+echo "CONFIG_PACKAGE_luci-app-vlmcsd=y" >> .config
+echo "CONFIG_PACKAGE_luci-app-vnstat=y" >> .config
+echo "CONFIG_PACKAGE_luci-app-netdata=y" >> .config
+echo "CONFIG_PACKAGE_https-dns-proxy=y" >> .config
+# PVE 虚拟化驱动优化
+echo "CONFIG_PACKAGE_kmod-virtio-net=y" >> .config
+echo "CONFIG_PACKAGE_kmod-virtio-balloon=y" >> .config
+# 扩容分区到 1G (防止 Netdata 撑爆)
+echo "CONFIG_TARGET_KERNEL_PARTSIZE=64" >> .config
+echo "CONFIG_TARGET_ROOTFS_PARTSIZE=1024" >> .config
